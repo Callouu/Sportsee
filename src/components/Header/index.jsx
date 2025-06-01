@@ -1,34 +1,47 @@
-import React from 'react'
-import { useState } from 'react'
-import { Link } from 'react-router'
+import React from 'react';
+import {Link} from "react-router";
 
+
+/**
+ * @component
+ * @description Component Header for all pages. Contains the logo and the links for pages Home, Profil, Settings and Community
+ */
 function Header() {
 
-    const { userId } = useDataContext();
-    const [toggleMenu, setToggleMenu] = useState(false);
+	return (
 
-  return (
-    <header className="header">
-            <img className="header_img" src={Logo} alt="SportSee - logo" />
-            <img className="header_hamb" src={Hamb} alt="SportSee - menu" onClick={() => setToggleMenu(!toggleMenu)} />
-            <nav className={toggleMenu ? "header_nav visible" : "header_nav"}>
-                <ul>
-                    <Link to="/">
-                        <li>Accueil</li>
-                    </Link>
-                    <Link to={userId && `/profile/${userId}`}>
-                        <li>Profil</li>
-                    </Link>
-                    <Link to="/">
-                        <li>Réglage</li>
-                    </Link>
-                    <Link to="/">
-                        <li>Communauté</li>
-                    </Link>
-                </ul>
-            </nav>
-        </header>
-  )
+		<header>
+
+			<div className="header__">
+				<div className="header__logo">
+					{/* <img src={headerLogo} alt="" /> */}
+				</div>
+				<h1 className="header__title">Sportsee</h1>
+			</div>
+
+			<Link to="/" >
+				<p>Accueil</p>
+			</Link>
+
+			<Link to="/user/12" >
+				<p>Profil</p>
+			</Link>
+
+			<Link to="/settings" >
+				<p>Réglage</p>
+			</Link>
+
+			<Link to="/community" >
+				<p>Communauté</p>
+			</Link>
+
+		</header>
+
+	)
 }
 
-export default Header
+Header.propTypes = {
+
+}
+
+export default Header;
