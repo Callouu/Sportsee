@@ -11,20 +11,6 @@ const USE_MOCK = true; // Passe à false pour utiliser l'API
 const BASE_URL = "http://localhost:3000";
 
 /**
- * @description Function to create the url to fetch, who check if datas are mocked and add .json if needed
- * @param  {string} base First part of API adress ("" for mocked datas)
- * @param  {string} path Path of the desired end-point of the API
- */
-// const createUrl = (base, path) => {
-//     let url = `${base}${path}`;
-//     if (base === "") {
-//         url += ".json";
-//     }
-//     console.log(url)
-//     return url;
-// };
-
-/**
  * @description Function to fetch datas, and return response in json format
  * @param {string} url Path of the desired end-point of the API
  */
@@ -32,6 +18,7 @@ const getApiDatas = (url) =>
     fetch(`${BASE_URL}${url}`)
         .then((response) => {
             if (!response.ok) throw new Error('Network response was not ok');
+            // console.log(response); // Pour debug, voir si la réponse est correcte
             return response.json();
         });
 /**
@@ -46,6 +33,7 @@ export const getUserDatas = (userId) => {
         let activityData = Promise.resolve(USER_ACTIVITY.find(a => a.userId === userId));
         let sessionData = Promise.resolve(USER_AVERAGE_SESSIONS.find(s => s.userId === userId));
         let perfData = Promise.resolve(USER_PERFORMANCE.find(p => p.userId === userId));
+        // console.log(userData); // Pour debug, voir si les données sont correctes
         return Promise.all([userData, activityData, sessionData, perfData]);
     } else {
         // Utilisation de l'API backend
@@ -56,7 +44,3 @@ export const getUserDatas = (userId) => {
         return Promise.all([userData, activityData, sessionData, perfData]);
     }
 };
-
-// Just two lines to check if these routes are working (user stories 8 and 10)
-    // console.log(getApiDatas(process.env.PUBLIC_URL + `/user/${userId}/today-score`).then((res) => console.log(res)))
-    // console.log(getApiDatas(process.env.PUBLIC_URL + `/user/${userId}/key-data`).then((res) => console.log(res)))
