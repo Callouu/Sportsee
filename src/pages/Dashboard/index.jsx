@@ -5,6 +5,7 @@ import { useParams } from 'react-router'
 import Error from '../Error'
 import Loader from '../../components/Loader'
 import User from '../../utils/user'
+import ActivityChart from '../../components/Charts/ActivityChart'
 
 
 
@@ -53,8 +54,35 @@ function Dashboard() {
 
   return (
     <div>
-        <h2>Bonjour <em>{user.getFirstName("firstName")}</em></h2>
-	<p className="dashboard-text">Félicitations ! Vous avez explosé vos objectifs hier 👏</p>
+      <section className="dashboard">
+
+				<h2>Bonjour <em>{user.getFirstName("firstName")}</em></h2>
+				<p className="dashboard-text">Félicitations ! Vous avez explosé vos objectifs hier 👏</p>
+		
+				<section className="dashboard__graphs">
+
+					<div className="dashboard__graphs__charts">
+
+						<ActivityChart data={user.activities} />
+
+						<div className="dashboard__graphs__charts-smalls">
+							{/* <SessionChartD3 data={user} sessions={userSessions} />
+							<PerformancesChart data={user.performances} />
+							<ScoreChart data={user.infos}/> */}
+						</div>
+
+					</div>
+				
+				<div className="dashboard__graphs__nutriments">
+					{/* <Nutriment quantity={user.getNutriment("calorieCount")} nutriment="Calories" /> 
+					<Nutriment quantity={user.getNutriment("proteinCount")} nutriment="Protéines" />
+					<Nutriment quantity={user.getNutriment("carbohydrateCount")} nutriment="Glucides" />
+					<Nutriment quantity={user.getNutriment("lipidCount")} nutriment="Lipides" /> */}
+				</div> 
+				
+				</section>
+
+			</section>
     </div>
   )
 }

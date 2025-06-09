@@ -1,11 +1,16 @@
-import React from 'react';
-import {Link} from "react-router";
+import React from 'react'
+import { Link } from 'react-router'
+import logo from '../../assets/logo.svg'
 
 
 /**
+ * Render the Header with a logo and a navbar
+ *
+ * @category Components
  * @component
- * @description Component Header for all pages. Contains the logo and the links for pages Home, Profil, Settings and Community
+ * @returns { React.Component } A React component
  */
+
 function Header() {
 
 	return (
@@ -14,7 +19,7 @@ function Header() {
 
 			<div className="header__">
 				<div className="header__logo">
-					{/* <img src={headerLogo} alt="" /> */}
+					<img src={logo} alt="" />
 				</div>
 				<h1 className="header__title">Sportsee</h1>
 			</div>
@@ -38,10 +43,6 @@ function Header() {
 		</header>
 
 	)
-}
-
-Header.propTypes = {
-
 }
 
 export default Header;
