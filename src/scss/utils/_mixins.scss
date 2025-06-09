@@ -1,0 +1,18 @@
+@mixin main-typography {
+	font-family: 'Roboto', sans-serif;
+	font-size: map-get($font-size, desktop);
+}
+
+@mixin title-typography {
+	font-family: 'Roboto', sans-serif;
+}
+
+@mixin desktop-breakpoint {
+	@media screen and (min-width: map-get($breakpoints, desktop)) {
+		@content;
+	}
+}
+
+@mixin no-margin {
+	margin: 0;
+}

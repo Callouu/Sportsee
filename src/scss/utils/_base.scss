@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700&display=swap');
+
+:root {
+  font-size: 10px;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  width: calc(100% - 344px);
+  margin-left: 144px;
+}
+
+body {
+  margin: 0 auto;
+}
+
+*,  ::before, ::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Roboto;
+  font-size: inherit;
+}
