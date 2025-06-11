@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import {Tooltip, ResponsiveContainer, BarChart , CartesianGrid, XAxis, YAxis, Bar} from 'recharts';
+import {Tooltip, ResponsiveContainer, BarChart , CartesianGrid, XAxis, YAxis, Bar, Legend} from 'recharts';
 
 /**
  * Format the box who appears on hover on the Bar Chart
@@ -11,7 +11,7 @@ const CustomizedToolTip = ({ active, payload }) => {
 
 	if (active && payload && payload.length) {
 		return (
-			<div className="custom-tooltip-line">
+			<div className="tooltip">
 			  <p className="desc">{payload[0].value + "kg"}</p>
 			  <p className="desc">{payload[1].value + "Kcal"}</p>
 			</div>
@@ -40,102 +40,59 @@ function ActivityChart(props) {
 	}
 	
 	return (
-
-		<article className="barChart" >
-
-			<p className="barChart-title" >Activité quotidienne</p>
-
-			<ResponsiveContainer >
-
-				<BarChart width={"100%"} 
-				height={"40%"} 
-				data={activityData}
-				barCategoryGap={"20%"}
-				barGap={8}
-				margin={{top: 120, bottom: 30, right:30}} 
-				>
-
-					<CartesianGrid 
-					strokeDasharray="3 3" 
-					vertical={false}
+		<>
+			<h3 className="chartactivity-title">Activité quotidienne</h3>
+			<ResponsiveContainer width="100%" height="100%">
+				<BarChart data={activityData} barSize={7} barGap={8}>
+					<CartesianGrid strokeDasharray="3" vertical={false} />
+					<XAxis
+						dataKey="day"
+						tick={{ fill: '#9B9EAC' }}
+						tickLine={false}
+						stroke="#DEDEDE"
+						strokeWidth={2}
+						tickMargin={16}
+						tickFormatter={formatXAxis}
 					/>
-
-					<XAxis 
-					axisLine={false}
-					tickLine={false}
-					domain={['dataMin', 'dataMax']}
-					tickMargin={25}
-					tick={{stroke: '#9B9EAC'}}
-					tickFormatter={formatXAxis}
+					<YAxis
+						yAxisId="kilogram"
+						orientation="right"
+						tickMargin={30}
+						tick={{ fill: '#9B9EAC' }}
+						tickLine={false}
+						axisLine={false}
+						domain={['dataMin-2', 'dataMax+1']}
+						tickCount={3}
 					/>
-
-					<YAxis 
-					orientation="right" 
-					tickCount={3}
-					domain={['dataMin - 1', 'dataMax']}
-					dataKey="kilogram"
-					axisLine={false}
-					tickLine={false}
-					tickMargin={30}
-					tick={{stroke: '#9B9EAC'}}
-					/>
-
-					<YAxis 
-					tickCount={6}
-					domain={[0, 600]}
-					dataKey="calories"
-					axisLine={false}
-					tickLine={false}
-					tick={false}
-					hide={true}
-					yAxisId="cl"
-					/>
-
-					<Bar 
-					stackId="kg" 
-					barSize={8} 
-					dataKey="kilogram" 
-					label={false} 
-					fill="#282D30" 
-					radius={[25, 25, 0, 0]}
-					/>
-
-					<Bar 
-					stackId="cl" 
-					barSize={8} 
-					dataKey="calories" 
-					label={false} 
-					fill="#E60000"
-					radius={[25, 25, 0, 0]}
-					yAxisId="cl"
-					/>
-
+					<YAxis hide yAxisId="calories" />
 					<Tooltip
-					label={activityData}
-					cursor={{fill: "rgba(0,0,0,0.15)"}}
-					content={<CustomizedToolTip/>}
-					offset={35}
+						content={<CustomizedToolTip/>}
+						cursor={{ fill: 'rgba(196, 196, 196, 0.5)' }}
 					/>
-					
+					<Bar
+						name="Poids (kg)"
+						dataKey="kilogram"
+						yAxisId="kilogram"
+						fill="#282D30"
+						radius={[3, 3, 0, 0]}
+					/>
+					<Bar
+						name="Calories brûlées (kCal)"
+						dataKey="calories"
+						yAxisId="calories"
+						fill="#E60000"
+						radius={[3, 3, 0, 0]}
+					/>
+					<Legend
+						verticalAlign="top"
+						align="right"
+						iconType="circle"
+						iconSize="10"
+						height={80}
+					/>
 				</BarChart>
-
 			</ResponsiveContainer>
-
-			<div className="custom-tooltip-legend">
-
-				<div className="kilogram">
-					<div className="blackRound"></div>
-					<p className="desc">Poids (kg)</p>
-				</div>
-
-				<div className="calories">
-					<div className="redRound"></div>
-					<p className="desc">Calories brûlées (kCal)</p>
-				</div>
-
-			</div>
-
-		</article>
+		</>
 	)
 }
 
