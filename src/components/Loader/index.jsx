@@ -6,12 +6,9 @@ import React from 'react';
  */
 function Loader() {
 	return (
-		<div className="loader">Chargement...</div>
+		<div className="loader"></div>
 	)
 }
 
-Loader.propTypes = {
-
-}
 
 export default Loader;
