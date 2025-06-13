@@ -1,12 +1,13 @@
+import React from "react";
 import {
-	RadarChart,
-	PolarGrid,
-	PolarAngleAxis,
-	Radar,
-	ResponsiveContainer,
-	PolarRadiusAxis,
-	Text,
-} from 'recharts'
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  Radar,
+  ResponsiveContainer,
+  PolarRadiusAxis,
+  Tooltip,
+} from "recharts";
 
 /**
  * Render a RadarChart using Recharts
@@ -15,80 +16,72 @@ import {
  * @component
  * @returns { React.Component } A React component
  */
-function ChartPerformance({ data }) {
-	/**
-	 * Function to render the labels of the chart in a Text component
-	 *
-	 * @param { Object } payload - The payload of the labels
-	 * @param { Number } x - The x position of the label
-	 * @param { Number } y - The y position of the label
-	 * @param { Number } cx - The x position of the center of the label
-	 * @param { Number } cy - The y position of the center of the label
-	 * @param { Object } rest - The rest of the props of the label
-	 * @returns A function that returns a Text component
-	 */
 
-	// Récupère le tableau de données, que ce soit data.data ou data
-    const perfData = Array.isArray(data?.data) ? data.data : Array.isArray(data) ? data : [];
-    const kind = data?.kind || {};
+/**
+ * Format the box who appears on hover on the Bar Chart
+ * @param  {} payload datas we need to take to show informations on the tooltip
+ */
 
-    if (!perfData.length) return null; // ou un loader
-
-	const renderPolarAngleAxis = ({ payload, x, y, cx, cy, ...rest }) => {
-    const formatLabel = (value) => {
-        if (value === 'Energy') return 'Energie'
-        if (value === 'Strength') return 'Force'
-        if (value === 'Speed') return 'Vitesse'
-        if (value === 'Intensity') return 'Intensité'
-        return value
-    }
-
-    const label = kind[payload.value]
-        ? formatLabel(
-            kind[payload.value].charAt(0).toUpperCase() +
-            kind[payload.value].slice(1)
-        )
-        : "";
-
+const CustomizedTooltip = ({ payload }) => {
+  if (payload && payload.length) {
     return (
-        <Text
-            {...rest}
-            verticalAnchor="middle"
-            y={y + (y - cy) / 10}
-            x={x + (x - cx) / 100}
-            fill="#FFFFFF"
-            fontSize="0.75rem"
-        >
-            {label}
-        </Text>
-    )
+      <div className="custom-tooltip-radar">
+        <h1 className="desc">{payload[0].value}</h1>
+      </div>
+    );
+  }
+  return null;
+};
+
+const formatPolarAngleAxis = (number) => {
+  const labels = new Array(6);
+  labels[1] = "Cardio";
+  labels[2] = "Energie";
+  labels[3] = "Endurance";
+  labels[4] = "Force";
+  labels[5] = "Vitesse";
+  labels[6] = "Intensité";
+  return labels[number];
+};
+
+function ChartPerformance({ data }) {
+  // Récupère le tableau de données
+  const kind = data?.kind || {};
+  const perfData = (
+    Array.isArray(data?.data) ? data.data : Array.isArray(data) ? data : []
+  ).map((item) => ({
+    ...item,
+    label: kind[item.kind]
+      ? kind[item.kind].charAt(0).toUpperCase() + kind[item.kind].slice(1)
+      : String(item.kind),
+  }));
+
+  console.log(perfData);
+
+  return (
+    <ResponsiveContainer width="100%" height="100%">
+      <RadarChart outerRadius={90} data={[...perfData].reverse()}>
+        <PolarGrid radialLines={false} />
+        <PolarAngleAxis
+          dataKey="label"
+          tickFormatter={formatPolarAngleAxis}
+          dy={3}
+          stroke="white"
+          tick={{ fontSize: "0.75rem" }}
+          tickSize={10}
+          tickLine={false}
+        />
+        <PolarRadiusAxis tickCount={6} tick={false} axisLine={false} />
+        <Radar
+          dataKey="value"
+          stroke="#FF0101"
+          fill="#FF0101"
+          fillOpacity={0.7}
+        />
+        <Tooltip content={<CustomizedTooltip />} />
+      </RadarChart>
+    </ResponsiveContainer>
+  );
 }
 
-	return (
-		<>
-			<ResponsiveContainer width="100%" height="100%">
-				<RadarChart outerRadius={90} data={[...perfData].reverse()}>
-					<PolarGrid radialLines={false} />
-					<PolarAngleAxis
-						dataKey="kind"
-						tick={(props) => renderPolarAngleAxis(props)}
-					/>
-					<PolarRadiusAxis
-						tickCount={6}
-						tick={false}
-						axisLine={false}
-					/>
-					<Radar
-						dataKey="value"
-						stroke="#FF0101"
-						fill="#FF0101"
-						fillOpacity={0.6}
-					/>
-				</RadarChart>
-			</ResponsiveContainer>
-		</>
-	)
-}
-
-
-export default ChartPerformance
+export default ChartPerformance;

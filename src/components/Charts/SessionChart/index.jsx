@@ -45,7 +45,7 @@ function SessionChart({ data }) {
         Durée moyenne des <br />
         sessions
       </h3>
-      <ResponsiveContainer width="90%" height="70%" className={"center"}>
+      <ResponsiveContainer width="90%" height="80%" className={"center"}>
         <LineChart data={data}>
           <Line
             type="natural"
@@ -64,7 +64,7 @@ function SessionChart({ data }) {
             axisLine={false}
             tickLine={false}
             tick={{
-              fill: "rgba(255,255,255,0.6)",
+              fill: "rgba(255,255,255,0.5)",
               fontSize: "0.75rem",
             }}
             tickFormatter={formatLabel}
