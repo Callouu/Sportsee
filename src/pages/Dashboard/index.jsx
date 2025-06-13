@@ -1,90 +1,130 @@
-import React from 'react'
-import { getUserDatas } from '../../utils/getdata'
-import { useState, useEffect } from 'react'
-import { useParams } from 'react-router'
-import Error from '../Error'
-import Loader from '../../components/Loader'
-import User from '../../utils/user'
-import ActivityChart from '../../components/Charts/ActivityChart'
-
-
+import React from "react";
+import { getUserDatas } from "../../utils/getdata";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router";
+import Error from "../Error";
+import Loader from "../../components/Loader";
+import User from "../../utils/user";
+import ChartCard from "../../components/ChartCard";
+import ActivityChart from "../../components/Charts/ActivityChart";
+import PerformanceChart from "../../components/Charts/PerformanceChart";
+import ScoreChart from "../../components/Charts/ScoreChart";
+import Card from "../../components/Card";
+import SessionChart from "../../components/Charts/SessionChart";
+import energy from "../../assets/energy.svg";
+import chicken from "../../assets/chicken.svg";
+import apple from "../../assets/apple.svg";
+import cheeseburger from "../../assets/cheeseburger.svg";
 
 function Dashboard() {
-  	// user datas, fetched in the useEffect in getUserDatas
-	const [user, setUser] = useState({});
-	// user Sessions datas, fetched in the useEffect in getUserDatas, to have an array with only the day datas, to display on the session chart
-	const [userSessions, setUserSessions] = useState([]);
-	// isLoaded and error, to display a loader or an error if we have some problems when fetching the datas
-	const [isLoaded, setIsLoaded] = useState(false);
-	const [error, setError] = useState(null);
-	// User Id, taking from the url params
-	const {userId} = useParams();
+  // user datas, fetched in the useEffect in getUserDatas
+  const [user, setUser] = useState({});
+  // user Sessions datas, fetched in the useEffect in getUserDatas, to have an array with only the day datas, to display on the session chart
+  const [userSessions, setUserSessions] = useState([]);
+  // isLoaded and error, to display a loader or an error if we have some problems when fetching the datas
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [error, setError] = useState(null);
+  // User Id, taking from the url params
+  const { userId } = useParams();
 
-
- useEffect(() => {
+  useEffect(() => {
     getUserDatas(Number(userId))
-        .then((result) => {
-            if (!result[0] || !result[1] || !result[2] || !result[3]) {
-                setError(true);
-                setIsLoaded(true);
-                return;
-            }
-            let user = new User(result[0], result[1], result[2], result[3]);
-            setUser(user);
-            let userSession = user.sessions?.sessions || [];
-            const userSessionsLength = userSession.map((day) => day.sessionLength);
-            setUserSessions(userSessionsLength);
-            setIsLoaded(true);
-        })
-        .catch(err => {
-            console.error('Erreur dans Dashboard:', err);
-            setError(true);
-            setIsLoaded(true);
-        })
-}, [userId])
+      .then((result) => {
+        if (!result[0] || !result[1] || !result[2] || !result[3]) {
+          setError(true);
+          setIsLoaded(true);
+          return;
+        }
+        let user = new User(result[0], result[1], result[2], result[3]);
+        setUser(user);
+        let userSession = user.sessions?.sessions || [];
+        const userSessionsLength = userSession.map((day) => day.sessionLength);
+        setUserSessions(userSessionsLength);
+        setIsLoaded(true);
+      })
+      .catch((err) => {
+        console.error("Erreur dans Dashboard:", err);
+        setError(true);
+        setIsLoaded(true);
+      });
+  }, [userId]);
 
-	if(error) {
-		return (
-		<Error type="fetchError"/>
-		)
-	}
-	if(!isLoaded) {
-		return (<Loader />)
-	}
+  if (error) {
+    return <Error type="fetchError" />;
+  }
+  if (!isLoaded) {
+    return <Loader />;
+  }
 
   return (
-    <div>
-      <section className="dashboard">
+    <section className="profil-wrapper">
+      <div className="profil">
+        <h2 className="profil-title">
+          Bonjour{" "}
+          <span className="profil-firstName">
+            {user.getFirstName("firstName")}
+          </span>
+        </h2>
+        <p className="profil-subtitle">
+          Félicitation ! Vous avez explosé vos objectifs hier 👏
+        </p>
+        <div className="dashboard">
+          <div className="dashboard-charts-wrapper">
+            <div className="activity-charts">
+              <ActivityChart data={user.activities} />
+            </div>
+            <div className="small-card-wrapper">
+              <ChartCard
+                className="average-sessions"
+                content={<SessionChart data={user.sessions?.sessions || []} />}
+              />
 
-				<h2>Bonjour <em>{user.getFirstName("firstName")}</em></h2>
-				<p className="dashboard-text">Félicitations ! Vous avez explosé vos objectifs hier 👏</p>
-		
-				<section className="dashboard__graphs">
+              <ChartCard
+                className="performance"
+                content={<PerformanceChart data={user.performances} />}
+              />
 
-					<div className="dashboard__graphs__charts">
+              <ChartCard
+                className="score"
+                content={<ScoreChart data={user.infos} />}
+              />
+            </div>
+          </div>
 
-						<ActivityChart data={user.activities} />
-
-						<div className="dashboard__graphs__charts-smalls">
-							{/* <SessionChartD3 data={user} sessions={userSessions} />
-							<PerformancesChart data={user.performances} />
-							<ScoreChart data={user.infos}/> */}
-						</div>
-
-					</div>
-				
-				<div className="dashboard__graphs__nutriments">
-					{/* <Nutriment quantity={user.getNutriment("calorieCount")} nutriment="Calories" /> 
-					<Nutriment quantity={user.getNutriment("proteinCount")} nutriment="Protéines" />
-					<Nutriment quantity={user.getNutriment("carbohydrateCount")} nutriment="Glucides" />
-					<Nutriment quantity={user.getNutriment("lipidCount")} nutriment="Lipides" /> */}
-				</div> 
-				
-				</section>
-
-			</section>
-    </div>
-  )
+          <div className="dashboard-aside">
+            <Card
+              userKeyData={user.getNutriment("calorieCount")}
+              unit="kCal"
+              subtitle="Calories"
+              className="calorie"
+              logo={energy}
+            />
+            <Card
+              userKeyData={user.getNutriment("proteinCount")}
+              unit="g"
+              subtitle="Proteines"
+              className="protein"
+              logo={chicken}
+            />
+            <Card
+              userKeyData={user.getNutriment("carbohydrateCount")}
+              unit="g"
+              subtitle="Glucides"
+              className="carbohydrate"
+              logo={apple}
+            />
+            <Card
+              userKeyData={user.getNutriment("lipidCount")}
+              unit="g"
+              subtitle="Lipides"
+              className="lipid"
+              logo={cheeseburger}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
 
-export default Dashboard
+export default Dashboard;
