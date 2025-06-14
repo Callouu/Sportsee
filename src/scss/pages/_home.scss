@@ -1,8 +1,8 @@
 .home {
 	margin-top: 141px;
-	margin-left: 100px;
-	margin-bottom: 100px;
-	margin-right: 100px;
+	margin-left: 200px;
+	// margin-bottom: 100px;
+	// margin-right: 100px;
 	width: 100%;
 
 
@@ -33,7 +33,7 @@
 		max-width: 500px;
 		min-width: 300px;
 
-		.btn-user12 button{
+		.btn-user button{
 			padding: 6px 20px;
 			border-radius: 15px;
 			margin-top: 20px;
@@ -46,22 +46,9 @@
 				box-shadow: 0 0 6px $secondary;
 			}
 		}
-		.btn-user18 button{
-			padding: 6px 20px;
-			border-radius: 15px;
-			margin-top: 20px;
-			font-size: 1.5rem;
-			font-weight: 500;
-			border: 2px solid black;
-			transition: all 0.4s ease;
-	
-			&:hover  {
-				box-shadow: 0 0 6px $secondary;
-			}
 		}
 	}
 
-}
 
 
 @media screen and (max-width: 1012px) {

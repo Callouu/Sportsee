@@ -1,7 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router'
-import logo from '../../assets/logo.svg'
-
+import React from "react";
+import { Link } from "react-router";
+import logo from "../../assets/logo.svg";
 
 /**
  * Render the Header with a logo and a navbar
@@ -12,37 +11,28 @@ import logo from '../../assets/logo.svg'
  */
 
 function Header() {
+  return (
+    <header className="nav-wrapper">
+      <img src={logo} alt="" className="nav-logo vertical-center" />
+      <nav className="nav vertical-center">
+        <Link to="/">
+          <p>Accueil</p>
+        </Link>
 
-	return (
+        <Link to="/user/12">
+          <p>Profil</p>
+        </Link>
 
-		<header>
+        <Link to="/settings">
+          <p>Réglage</p>
+        </Link>
 
-			<div className="header__">
-				<div className="header__logo">
-					<img src={logo} alt="" />
-				</div>
-				<h1 className="header__title">Sportsee</h1>
-			</div>
-
-			<Link to="/" >
-				<p>Accueil</p>
-			</Link>
-
-			<Link to="/user/12" >
-				<p>Profil</p>
-			</Link>
-
-			<Link to="/settings" >
-				<p>Réglage</p>
-			</Link>
-
-			<Link to="/community" >
-				<p>Communauté</p>
-			</Link>
-
-		</header>
-
-	)
+        <Link to="/community">
+          <p>Communauté</p>
+        </Link>
+      </nav>
+    </header>
+  );
 }
 
 export default Header;

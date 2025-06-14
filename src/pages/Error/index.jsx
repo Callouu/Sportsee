@@ -11,7 +11,7 @@ function Error() {
 				<>
 					<p className="error404__number">404</p>
 					<div className="error404__phrase">
-						<p>Oups! Une erreur... 😭 </p>
+						<p>Une erreur est survenue </p>
 					</div>
 				</>
 			<Link to="/" >
@@ -19,10 +19,6 @@ function Error() {
 			</Link>
 		</section>
 	)
-}
-
-Error.propTypes = {
-	
 }
 
 export default Error;
