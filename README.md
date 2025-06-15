@@ -6,7 +6,7 @@
 
 ## Aperçu
 
-![SportSee Dashboard](https://user-images.githubusercontent.com/your-preview-image.png)
+![SportSee Dashboard](https://github.com/Callouu/Sportsee/blob/main/src/assets/Screenshot_4.png)
 
 ---
 
@@ -68,7 +68,6 @@ Sportsee/
 │   ├── pages/           # Pages (Dashboard, Profil)
 │   ├── scss/            # Fichier SCSS 
 │   └── utils/           # Appels API
-├── public/              # Fichiers statiques
 ├── jsdoc.json           # Config JSDoc
 └── README.md            # Ce fichier
 ```
