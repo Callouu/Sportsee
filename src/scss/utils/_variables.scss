@@ -1,7 +1,8 @@
 /* Color variables */
 
-$secondary: #020203;
+$secondary: #5c5c5c;
 $primary: #ff0101;
+$primary-color: #ff0101;
 $grey: rgba(196, 196, 196, 0.5);
 $lightgrey: #fbfbfb;
 $red: #ff0000;
@@ -15,8 +16,6 @@ $smalldevices: 576px;
 $mediumdevices: 768px;
 $largedevices: 992px;
 $xlargedevices: 1200px;
-
-$primary-color: #ff0101;
 
 $font-size: (
 	desktop: 1rem,

@@ -1,25 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700&display=swap');
 
-:root {
-  font-size: 10px;
-}
 
 main {
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  width: calc(100% - 344px);
-  margin-left: 144px;
+  // flex-direction: row;
+  // width: 100%;
+  // width: calc(100% - 344px);
+  // margin-left: 144px;
 }
 
 body {
   margin: 0 auto;
 }
 
-*,  ::before, ::after {
+*,
+::before,
+::after {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-family: Roboto;
-  font-size: inherit;
+  text-decoration: none;
+}
+
+section {
+  width: 100%;
+  margin-top: 5.6875rem;
+  margin-left: 7.3125rem;
+  padding-top: 2rem;
+}
+
+img {
+  width: 100%;
+  height: auto;
 }

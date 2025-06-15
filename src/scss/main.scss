@@ -3,7 +3,14 @@
 @import "./utils/base";
 @import "./components/header";
 @import "./components/sidebar";
+@import "./components/loader";
 @import "./components/sidebarButton";
 @import "./components/activityChart";
+@import "./components/sessionChart";
+@import "./components/scoreChart";
+@import "./components/performanceChart";
+@import "./components/chartCard";
+@import "./components/card";
 @import "./pages/home";
 @import "./pages/dashboard";
+@import "./pages/error";

@@ -1,6 +1,6 @@
 .profil {
 	width: 830px;
-	margin: auto;
+	margin: 0 150px 0 150px;
 	padding-left: 10px;
 	@include desktop-breakpoint {
 		width: fit-content;
@@ -40,10 +40,12 @@
 		display: flex;
 		justify-content: space-between;
 		order: 1;
+					width: 53rem;
 		@include desktop-breakpoint {
 			display: block;
 			order: 2;
 			margin-left: 1.9375rem;
+			width: auto;
 		}
 	}
 }
@@ -52,6 +54,7 @@
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 2rem;
+	width: 53rem;
 	@include desktop-breakpoint {
 		margin-bottom: 0;
 	}
