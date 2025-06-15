@@ -76,6 +76,7 @@ Sportsee/
 L’API propose des données pour les utilisateurs suivants :
 
 ID 12
+
 ID 18
 
 Accédez par exemple à :
