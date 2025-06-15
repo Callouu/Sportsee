@@ -1,6 +1,6 @@
-# 🏋️ SportSee – Tableau de bord sportif
+# SportSee
 
-**SportSee** est une application web de suivi d’activité physique permettant aux utilisateurs de visualiser leurs performances sportives à travers des graphiques interactifs. Ce projet fait partie du parcours développeur Front-End d’OpenClassrooms.
+**SportSee** est une application web de suivi d’activité physique permettant aux utilisateurs de visualiser leurs performances sportives à travers des graphiques interactifs.
 
 ---
 
