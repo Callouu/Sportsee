@@ -54,7 +54,7 @@ yarn start
 ```bash
 cd ..
 yarn install
-yarn start
+yarn dev
 ```
 ## Structure du projet
 
