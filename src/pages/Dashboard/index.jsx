@@ -16,6 +16,17 @@ import chicken from "../../assets/chicken.svg";
 import apple from "../../assets/apple.svg";
 import cheeseburger from "../../assets/cheeseburger.svg";
 
+/** 
+ * @component
+ * @namespace Dashboard
+ * 
+ * @description This is component for Dashboard page, it handles 3 states (user => datas of the user, loader => if true, Loader component is rendered, 
+ *   error => if true, Error component is rendered)
+ * @returns If loader and error are false, the Dashboard is rendered, with first name, nutriments and some charts with fetched informations of the user
+ * 
+ */
+
+
 function Dashboard() {
   // user datas, fetched in the useEffect in getUserDatas
   const [user, setUser] = useState({});

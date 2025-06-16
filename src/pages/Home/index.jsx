@@ -9,7 +9,7 @@ function Home() {
     return (
         <div className="home">
             <h2>
-                Bienvenue sur Sportsee
+                Bienvenue sur <span>Sportsee</span>
             </h2>
             <div className="descript">
                 <p>Choisissez l'utilisateur ci-dessous pour accéder au tableau de bord</p>

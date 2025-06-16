@@ -10,11 +10,6 @@ import {
   Legend,
 } from "recharts";
 
-/**
- * Format the box who appears on hover on the Bar Chart
- * @param  {} active true if the box appears
- * @param  {} payload datas we need to take to show informations on the tooltip
- */
 const CustomizedToolTip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
