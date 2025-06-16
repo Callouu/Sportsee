@@ -6,8 +6,19 @@ import {
   Tooltip,
   YAxis,
   ResponsiveContainer,
+  Rectangle,
 } from "recharts";
 
+/**
+ * Custom tooltip for the LineChart.
+ * Displays the session length in minutes when hovering over a point.
+ *
+ * @function
+ * @param {Object} props - Tooltip properties provided by Recharts.
+ * @param {boolean} props.active - Whether the tooltip is active.
+ * @param {Array} props.payload - Data of the hovered point.
+ * @returns {JSX.Element|null} The tooltip component or null if inactive.
+ */
 const CustomizedToolTip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
@@ -17,6 +28,31 @@ const CustomizedToolTip = ({ active, payload }) => {
     );
   }
   return null;
+};
+
+/**
+ * Custom cursor for the LineChart.
+ * Renders a background rectangle when hovering over the chart.
+ *
+ * @function
+ * @param {Object} props - Cursor properties provided by Recharts.
+ * @param {Array} props.points - Cursor coordinates.
+ * @param {number} props.height - Height of the chart.
+ * @param {number} props.width - Width of the rectangle.
+ * @returns {JSX.Element} The background rectangle under the cursor.
+ */
+const CustomCursor = (props) => {
+  const { points, height, width } = props;
+  const { x } = points[0];
+  return (
+    <Rectangle
+      fill="rgba(0,0,0,0.1)"
+      x={x}
+      y={0}
+      width={width}
+      height={height + 400}
+    />
+  );
 };
 
 /**
@@ -45,8 +81,8 @@ function SessionChart({ data }) {
         Durée moyenne des <br />
         sessions
       </h3>
-      <ResponsiveContainer width="90%" height="80%" className={"center"}>
-        <LineChart data={data}>
+      <ResponsiveContainer width="100%" height="100%" className={"center"}>
+        <LineChart data={data} margin={{ top: 30, right: 10, left: 10, bottom: 30 }}>
           <Line
             type="natural"
             dataKey="sessionLength"
@@ -70,7 +106,7 @@ function SessionChart({ data }) {
             tickFormatter={formatLabel}
             tickMargin={20}
           />
-          <Tooltip content={<CustomizedToolTip />} cursor={false} />
+          <Tooltip content={<CustomizedToolTip />} cursor={<CustomCursor />} />
           <YAxis hide domain={["dataMin-10", "dataMax+10"]} />
           <defs>
             <linearGradient id="colorUv" x1="0%" y1="0" x2="100%" y2="0">
