@@ -10,6 +10,16 @@ import {
   Legend,
 } from "recharts";
 
+/**
+ * Custom tooltip for the chart.
+ * Displays additional information when hovering over a data point.
+ *
+ * @function
+ * @param {Object} props - Tooltip properties provided by Recharts.
+ * @param {boolean} props.active - Indicates if the tooltip is active.
+ * @param {Array} props.payload - Data of the hovered point.
+ * @returns {JSX.Element|null} The tooltip component or null if inactive.
+ */
 const CustomizedToolTip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
