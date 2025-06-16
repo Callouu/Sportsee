@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/Dashboard/index.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/Dashboard/index.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import { getUserDatas } from "../../utils/getdata";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router";
+import Error from "../Error";
+import Loader from "../../components/Loader";
+import User from "../../utils/user";
+import ChartCard from "../../components/ChartCard";
+import ActivityChart from "../../components/Charts/ActivityChart";
+import PerformanceChart from "../../components/Charts/PerformanceChart";
+import ScoreChart from "../../components/Charts/ScoreChart";
+import Card from "../../components/Card";
+import SessionChart from "../../components/Charts/SessionChart";
+import energy from "../../assets/energy.svg";
+import chicken from "../../assets/chicken.svg";
+import apple from "../../assets/apple.svg";
+import cheeseburger from "../../assets/cheeseburger.svg";
+
+/** 
+ * @component
+ * @namespace Dashboard
+ * 
+ * @description This is component for Dashboard page, it handles 3 states (user => datas of the user, loader => if true, Loader component is rendered, 
+ *   error => if true, Error component is rendered)
+ * @returns If loader and error are false, the Dashboard is rendered, with first name, nutriments and some charts with fetched informations of the user
+ * 
+ */
+
+
+function Dashboard() {
+  // user datas, fetched in the useEffect in getUserDatas
+  const [user, setUser] = useState({});
+  // user Sessions datas, fetched in the useEffect in getUserDatas, to have an array with only the day datas, to display on the session chart
+  const [userSessions, setUserSessions] = useState([]);
+  // isLoaded and error, to display a loader or an error if we have some problems when fetching the datas
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [error, setError] = useState(null);
+  // User Id, taking from the url params
+  const { userId } = useParams();
+
+  useEffect(() => {
+    getUserDatas(Number(userId))
+      .then((result) => {
+        if (!result[0] || !result[1] || !result[2] || !result[3]) {
+          setError(true);
+          setIsLoaded(true);
+          return;
+        }
+        let user = new User(result[0], result[1], result[2], result[3]);
+        setUser(user);
+        let userSession = user.sessions?.sessions || [];
+        const userSessionsLength = userSession.map((day) => day.sessionLength);
+        setUserSessions(userSessionsLength);
+        setIsLoaded(true);
+      })
+      .catch((err) => {
+        console.error("Erreur dans Dashboard:", err);
+        setError(true);
+        setIsLoaded(true);
+      });
+  }, [userId]);
+
+  if (error) {
+    return &lt;Error type="fetchError" />;
+  }
+  if (!isLoaded) {
+    return &lt;Loader />;
+  }
+
+  return (
+    &lt;section className="profil-wrapper">
+      &lt;div className="profil">
+        &lt;h2 className="profil-title">
+          Bonjour{" "}
+          &lt;span className="profil-firstName">
+            {user.getFirstName("firstName")}
+          &lt;/span>
+        &lt;/h2>
+        &lt;p className="profil-subtitle">
+          Félicitation ! Vous avez explosé vos objectifs hier 👏
+        &lt;/p>
+        &lt;div className="dashboard">
+          &lt;div className="dashboard-charts-wrapper">
+            &lt;div className="activity-charts">
+              &lt;ActivityChart data={user.activities} />
+            &lt;/div>
+            &lt;div className="small-card-wrapper">
+              &lt;ChartCard
+                className="average-sessions"
+                content={&lt;SessionChart data={user.sessions?.sessions || []} />}
+              />
+
+              &lt;ChartCard
+                className="performance"
+                content={&lt;PerformanceChart data={user.performances} />}
+              />
+
+              &lt;ChartCard
+                className="score"
+                content={&lt;ScoreChart data={user.infos} />}
+              />
+            &lt;/div>
+          &lt;/div>
+
+          &lt;div className="dashboard-aside">
+            &lt;Card
+              userKeyData={user.getNutriment("calorieCount")}
+              unit="kCal"
+              subtitle="Calories"
+              className="calorie"
+              logo={energy}
+            />
+            &lt;Card
+              userKeyData={user.getNutriment("proteinCount")}
+              unit="g"
+              subtitle="Proteines"
+              className="protein"
+              logo={chicken}
+            />
+            &lt;Card
+              userKeyData={user.getNutriment("carbohydrateCount")}
+              unit="g"
+              subtitle="Glucides"
+              className="carbohydrate"
+              logo={apple}
+            />
+            &lt;Card
+              userKeyData={user.getNutriment("lipidCount")}
+              unit="g"
+              subtitle="Lipides"
+              className="lipid"
+              logo={cheeseburger}
+            />
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    &lt;/section>
+  );
+}
+
+export default Dashboard;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="Dashboard.html">Dashboard</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Card">Card</a></li><li><a href="global.html#ChartCard">ChartCard</a></li><li><a href="global.html#ChartPerformance">ChartPerformance</a></li><li><a href="global.html#CustomizedTooltip">CustomizedTooltip</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Loader">Loader</a></li><li><a href="global.html#ScoreChart">ScoreChart</a></li><li><a href="global.html#SessionChart">SessionChart</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#SidebarIcon">SidebarIcon</a></li><li><a href="global.html#formatPolarAngleAxis">formatPolarAngleAxis</a></li><li><a href="global.html#getApiDatas">getApiDatas</a></li><li><a href="global.html#getUserDatas">getUserDatas</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Mon Jun 16 2025 14:30:01 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

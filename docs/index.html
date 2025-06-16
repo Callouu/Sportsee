@@ -43,15 +43,101 @@
 
 
     <section>
-        <article><h1>React + Vite</h1>
-<p>This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.</p>
-<p>Currently, two official plugins are available:</p>
+        <article><h1>SportSee</h1>
+<p><strong>SportSee</strong> est une application web de suivi d’activité physique permettant aux utilisateurs de visualiser leurs performances sportives à travers des graphiques interactifs.</p>
+<hr>
+<h2>Aperçu</h2>
+<p><img src="https://github.com/Callouu/Sportsee/blob/main/src/assets/Screenshot_4.png" alt="SportSee Dashboard"></p>
+<hr>
+<h2>Stack technique</h2>
 <ul>
-<li><a href="https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react">@vitejs/plugin-react</a> uses <a href="https://babeljs.io/">Babel</a> for Fast Refresh</li>
-<li><a href="https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc">@vitejs/plugin-react-swc</a> uses <a href="https://swc.rs/">SWC</a> for Fast Refresh</li>
+<li>React 17</li>
+<li>Recharts &amp; D3</li>
+<li>SCSS</li>
+<li>Node.js (API REST)</li>
+<li>JSDoc (Documentation)</li>
+<li>Docker (optionnel)</li>
 </ul>
-<h2>Expanding the ESLint configuration</h2>
-<p>If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the <a href="https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts">TS template</a> for information on how to integrate TypeScript and <a href="https://typescript-eslint.io"><code>typescript-eslint</code></a> in your project.</p></article>
+<hr>
+<h2>Prérequis</h2>
+<ul>
+<li>Node.js ≥ 16.13.1 (ou 12.18 recommandé par OC)</li>
+<li>Yarn (ou npm)</li>
+<li>Git</li>
+<li>Navigateur récent (Chrome, Firefox…)</li>
+</ul>
+<hr>
+<h2>Installation &amp; démarrage</h2>
+<h3>1. Cloner le dépôt</h3>
+<pre class="prettyprint source lang-bash"><code>git clone https://github.com/Callouu/Sportsee.git
+cd Sportsee
+</code></pre>
+<h2>Installer les dépendances</h2>
+<h3>Back‑end</h3>
+<pre class="prettyprint source lang-bash"><code>cd api
+yarn install
+yarn start
+</code></pre>
+<h3>Front-End</h3>
+<pre class="prettyprint source lang-bash"><code>cd ..
+yarn install
+yarn dev
+</code></pre>
+<h2>Structure du projet</h2>
+<pre class="prettyprint source lang-c#"><code>Sportsee/
+├── api/                 # API simulée avec Node.js
+├── src/                 # Code source React
+│   ├── assets/          # images et SVG
+│   ├── components/      # Composants UI (Header, Sidebar, etc.)
+│   ├── data/            # Données mockées de l'API
+│   ├── pages/           # Pages (Dashboard, Profil)
+│   ├── scss/            # Fichier SCSS 
+│   └── utils/           # Appels API
+├── jsdoc.json           # Config JSDoc
+└── README.md            # Ce fichier
+</code></pre>
+<h2>API - Utilisateurs disponibles</h2>
+<p>L’API propose des données pour les utilisateurs suivants :</p>
+<p>ID 12</p>
+<p>ID 18</p>
+<p>Accédez par exemple à :
+http://localhost:3001/user/12</p>
+<h2>Documentation technique</h2>
+<h3>documentation JSDoc</h3>
+<pre class="prettyprint source lang-bash"><code># Ouvrir docs/index.html dans votre navigateur
+</code></pre>
+<h2>API – Endpoints disponibles</h2>
+<table>
+<thead>
+<tr>
+<th>Méthode</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/user/:id</code></td>
+<td>Informations utilisateur</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/user/:id/activity</code></td>
+<td>Activité quotidienne</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/user/:id/average-sessions</code></td>
+<td>Sessions moyennes</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/user/:id/performance</code></td>
+<td>Données de performance</td>
+</tr>
+</tbody>
+</table></article>
     </section>
 
 
@@ -62,13 +148,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Card">Card</a></li><li><a href="global.html#ChartCard">ChartCard</a></li><li><a href="global.html#CustomizedToolTip">CustomizedToolTip</a></li><li><a href="global.html#CustomizedTooltip">CustomizedTooltip</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Loader">Loader</a></li><li><a href="global.html#ScoreChart">ScoreChart</a></li><li><a href="global.html#SessionChart">SessionChart</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#SidebarIcon">SidebarIcon</a></li><li><a href="global.html#getApiDatas">getApiDatas</a></li><li><a href="global.html#getUserDatas">getUserDatas</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="Dashboard.html">Dashboard</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Card">Card</a></li><li><a href="global.html#ChartCard">ChartCard</a></li><li><a href="global.html#ChartPerformance">ChartPerformance</a></li><li><a href="global.html#CustomizedTooltip">CustomizedTooltip</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Loader">Loader</a></li><li><a href="global.html#ScoreChart">ScoreChart</a></li><li><a href="global.html#SessionChart">SessionChart</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#SidebarIcon">SidebarIcon</a></li><li><a href="global.html#formatPolarAngleAxis">formatPolarAngleAxis</a></li><li><a href="global.html#getApiDatas">getApiDatas</a></li><li><a href="global.html#getUserDatas">getUserDatas</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Sun Jun 15 2025 14:37:18 GMT+0200 (heure d’été d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Mon Jun 16 2025 14:30:01 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>
