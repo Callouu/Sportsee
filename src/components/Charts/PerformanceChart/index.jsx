@@ -9,13 +9,6 @@ import {
   Tooltip,
 } from "recharts";
 
-/**
- * Render a RadarChart using Recharts
- *
- * @category Components
- * @component
- * @returns { React.Component } A React component
- */
 
 /**
  * Format the box who appears on hover on the Bar Chart
@@ -33,6 +26,12 @@ const CustomizedTooltip = ({ payload }) => {
   return null;
 };
 
+/**
+ * Return the label associated with the performance type index
+ * @function
+ * @param {number} number - performance type index (1 to 6)
+ * @returns {string|undefined} associated label or undefined if not found
+ */
 const formatPolarAngleAxis = (number) => {
   const labels = new Array(6);
   labels[1] = "Cardio";
@@ -44,6 +43,13 @@ const formatPolarAngleAxis = (number) => {
   return labels[number];
 };
 
+/**
+ * Render a RadarChart using Recharts
+ *
+ * @category Components
+ * @component
+ * @returns { React.Component } A React component
+ */
 function ChartPerformance({ data }) {
   // Récupère le tableau de données
   const kind = data?.kind || {};
