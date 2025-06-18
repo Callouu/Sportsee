@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/SidebarIcon/index.jsx</title>
+    <title>JSDoc: Source: utils/user.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/SidebarIcon/index.jsx</h1>
+    <h1 class="page-title">Source: utils/user.js</h1>
 
     
 
@@ -26,24 +26,31 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react'
-
-/**
- * Render a button with an image
- *
- * @category Components
- * @component
- * @returns { React.Component } A React component
+            <pre class="prettyprint source linenums"><code>/**
+ * @description Class User we need on the Dashboard component to create a new user when we fetch his datas
+ * @param  {Array} infos // User main data, like first name, last name, age, etc.
+ * @param  {Array} activities // User activities data, like weight, calories, etc.
+ * @param  {Array} sessions // User sessions data, like session length, etc.
+ * @param  {Array} performances // User performances data, like performance in different categories
  */
-function SidebarIcon({ logo }) {
-	return (
-		&lt;button className="sidebar-icon">
-			&lt;img src={logo} alt="" className="sidebar-icon-logo" />
-		&lt;/button>
-	)
+ class User {
+	constructor(infos, activities, sessions, performances) {
+		this.infos = infos.data || infos;
+        this.activities = activities.data || activities;
+        this.sessions = sessions.data || sessions;
+        this.performances = performances.data || performances;
+	}
+
+	getFirstName = () => {
+		return this.infos.userInfos.firstName;
+	}
+
+	getInfos = (name) => {
+		return this.infos.keyData[name];
+	}
 }
 
-export default SidebarIcon</code></pre>
+export default User;</code></pre>
         </article>
     </section>
 

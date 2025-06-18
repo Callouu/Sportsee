@@ -170,7 +170,7 @@
     
 
     
-    <h4 class="name" id="Card"><span class="type-signature"></span>Card<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    <h4 class="name" id="Card"><span class="type-signature"></span>Card<span class="signature">(props)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
     
 
     
@@ -178,7 +178,7 @@
 
 
 <div class="description">
-    Render a div (card) containing an image and text
+    Card component that displays an icon, a value with its unit, and a subtitle.
 </div>
 
 
@@ -187,6 +187,199 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Component props
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userKeyData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The value to display in the card</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>unit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The unit to display next to the value</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>subtitle</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The subtitle text for the card</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>className</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Additional class name(s) for styling the icon wrapper</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>logo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The image source for the icon</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -222,7 +415,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Card_index.jsx.html">components/Card/index.jsx</a>, <a href="components_Card_index.jsx.html#line10">line 10</a>
+        <a href="components_Card_index.jsx.html">components/Card/index.jsx</a>, <a href="components_Card_index.jsx.html#line16">line 16</a>
     </li></ul></dd>
     
 
@@ -251,7 +444,7 @@
 
         
 <div class="param-desc">
-    A React component
+    The rendered Card component
 </div>
 
 
@@ -280,7 +473,7 @@
     
 
     
-    <h4 class="name" id="ChartCard"><span class="type-signature"></span>ChartCard<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    <h4 class="name" id="ChartCard"><span class="type-signature"></span>ChartCard<span class="signature">(props)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
     
 
     
@@ -297,6 +490,127 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Component properties.
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>className</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Additional class name(s) for styling the card.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>content</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">JSX.Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The chart content to display inside the card.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -332,7 +646,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_ChartCard_index.jsx.html">components/ChartCard/index.jsx</a>, <a href="components_ChartCard_index.jsx.html#line10">line 10</a>
+        <a href="components_ChartCard_index.jsx.html">components/ChartCard/index.jsx</a>, <a href="components_ChartCard_index.jsx.html#line13">line 13</a>
     </li></ul></dd>
     
 
@@ -1640,7 +1954,7 @@
     
 
     
-    <h4 class="name" id="Loader"><span class="type-signature"></span>Loader<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Loader"><span class="type-signature"></span>Loader<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
     
 
     
@@ -1692,7 +2006,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Loader_index.jsx.html">components/Loader/index.jsx</a>, <a href="components_Loader_index.jsx.html#line7">line 7</a>
+        <a href="components_Loader_index.jsx.html">components/Loader/index.jsx</a>, <a href="components_Loader_index.jsx.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -1717,6 +2031,28 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    A React component
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -2477,13 +2813,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="Dashboard.html">Dashboard</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Card">Card</a></li><li><a href="global.html#ChartCard">ChartCard</a></li><li><a href="global.html#ChartPerformance">ChartPerformance</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomizedToolTip">CustomizedToolTip</a></li><li><a href="global.html#CustomizedTooltip">CustomizedTooltip</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Loader">Loader</a></li><li><a href="global.html#ScoreChart">ScoreChart</a></li><li><a href="global.html#SessionChart">SessionChart</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#SidebarIcon">SidebarIcon</a></li><li><a href="global.html#formatPolarAngleAxis">formatPolarAngleAxis</a></li><li><a href="global.html#getApiDatas">getApiDatas</a></li><li><a href="global.html#getUserDatas">getUserDatas</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="Dashboard.html">Dashboard</a></li></ul><h3>Classes</h3><ul><li><a href="User.html">User</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Card">Card</a></li><li><a href="global.html#ChartCard">ChartCard</a></li><li><a href="global.html#ChartPerformance">ChartPerformance</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomizedToolTip">CustomizedToolTip</a></li><li><a href="global.html#CustomizedTooltip">CustomizedTooltip</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Loader">Loader</a></li><li><a href="global.html#ScoreChart">ScoreChart</a></li><li><a href="global.html#SessionChart">SessionChart</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#SidebarIcon">SidebarIcon</a></li><li><a href="global.html#formatPolarAngleAxis">formatPolarAngleAxis</a></li><li><a href="global.html#getApiDatas">getApiDatas</a></li><li><a href="global.html#getUserDatas">getUserDatas</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Tue Jun 17 2025 00:44:49 GMT+0200 (heure d’été d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Wed Jun 18 2025 15:57:24 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

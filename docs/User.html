@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: Dashboard</title>
+    <title>JSDoc: Class: User</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: Dashboard</h1>
+    <h1 class="page-title">Class: User</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2>Dashboard</h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>User<span class="signature">(infos, activities, sessions, performances)</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -37,81 +37,11 @@
     <div class="container-overview">
     
         
-            <div class="description">This is component for Dashboard page, it handles 3 states (user => datas of the user, loader => if true, Loader component is rendered,   error => if true, Error component is rendered)</div>
-        
-
-        
-
-
-<dl class="details">
 
     
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_Dashboard_index.jsx.html">pages/Dashboard/index.jsx</a>, <a href="pages_Dashboard_index.jsx.html#line19">line 19</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id=".ActivityChart"><span class="type-signature">(static) </span>ActivityChart<span class="signature">(props)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="User"><span class="type-signature"></span>new User<span class="signature">(infos, activities, sessions, performances)</span><span class="type-signature"></span></h4>
     
 
     
@@ -119,7 +49,7 @@
 
 
 <div class="description">
-    Component who show evolution on a few days of the weight and the used calories of the user, on a bar chart
+    Class User we need on the Dashboard component to create a new user when we fetch his datas
 </div>
 
 
@@ -155,13 +85,13 @@
 
         <tr>
             
-                <td class="name"><code>props</code></td>
+                <td class="name"><code>infos</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">Array</span>
 
 
             
@@ -171,7 +101,76 @@
 
             
 
-            <td class="description last">Activities datas of the user</td>
+            <td class="description last">// User main data, like first name, last name, age, etc.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>activities</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">// User activities data, like weight, calories, etc.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>sessions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">// User sessions data, like session length, etc.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>performances</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">// User performances data, like performance in different categories</td>
         </tr>
 
     
@@ -212,7 +211,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Charts_ActivityChart_index.jsx.html">components/Charts/ActivityChart/index.jsx</a>, <a href="components_Charts_ActivityChart_index.jsx.html#line42">line 42</a>
+        <a href="utils_user.js.html">utils/user.js</a>, <a href="utils_user.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -242,7 +241,23 @@
 
 
 
-        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
     
 
     

@@ -104,28 +104,28 @@ function Dashboard() {
 
           <div className="dashboard-aside">
             <Card
-              userKeyData={user.getNutriment("calorieCount")}
+              userKeyData={user.getInfos("calorieCount")}
               unit="kCal"
               subtitle="Calories"
               className="calorie"
               logo={energy}
             />
             <Card
-              userKeyData={user.getNutriment("proteinCount")}
+              userKeyData={user.getInfos("proteinCount")}
               unit="g"
               subtitle="Proteines"
               className="protein"
               logo={chicken}
             />
             <Card
-              userKeyData={user.getNutriment("carbohydrateCount")}
+              userKeyData={user.getInfos("carbohydrateCount")}
               unit="g"
               subtitle="Glucides"
               className="carbohydrate"
               logo={apple}
             />
             <Card
-              userKeyData={user.getNutriment("lipidCount")}
+              userKeyData={user.getInfos("lipidCount")}
               unit="g"
               subtitle="Lipides"
               className="lipid"

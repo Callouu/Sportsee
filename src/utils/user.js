@@ -1,10 +1,10 @@
 /**
- * @param  {Array} infos
- * @param  {Array} activities
- * @param  {Array} sessions
- * @param  {Array} performances
- * @
- */// Class User we need on the Dashboard component to create a new user when we fetch his datas
+ * @description Class User we need on the Dashboard component to create a new user when we fetch his datas
+ * @param  {Array} infos // User main data, like first name, last name, age, etc.
+ * @param  {Array} activities // User activities data, like weight, calories, etc.
+ * @param  {Array} sessions // User sessions data, like session length, etc.
+ * @param  {Array} performances // User performances data, like performance in different categories
+ */
  class User {
 	constructor(infos, activities, sessions, performances) {
 		this.infos = infos.data || infos;
@@ -17,7 +17,7 @@
 		return this.infos.userInfos.firstName;
 	}
 
-	getNutriment = (name) => {
+	getInfos = (name) => {
 		return this.infos.keyData[name];
 	}
 }
