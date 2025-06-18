@@ -1,6 +1,6 @@
 .profil {
 	width: 830px;
-	margin: 0 150px 0 150px;
+	margin: auto;
 	padding-left: 10px;
 	@include desktop-breakpoint {
 		width: fit-content;

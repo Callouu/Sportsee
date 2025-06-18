@@ -7,7 +7,7 @@ import { Link } from "react-router";
  * */
 function Home() {
     return (
-        <div className="home">
+        <section className="home">
             <h2>
                 Bienvenue sur <span>Sportsee</span>
             </h2>
@@ -26,7 +26,7 @@ function Home() {
                     </button>
                 </Link>
             </div>
-        </div>
+        </section>
     );
 }
 

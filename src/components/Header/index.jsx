@@ -13,7 +13,9 @@ import logo from "../../assets/logo.svg";
 function Header() {
   return (
     <header className="nav-wrapper">
+      <Link to="/">
       <img src={logo} alt="" className="nav-logo vertical-center" />
+      </Link>
       <nav className="nav vertical-center">
         <Link to="/">
           <p>Accueil</p>
