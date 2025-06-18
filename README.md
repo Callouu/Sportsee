@@ -13,7 +13,7 @@
 ## Stack technique
 
 - React 17
-- Recharts & D3
+- Recharts
 - SCSS
 - Node.js (API REST)
 - JSDoc (Documentation)
